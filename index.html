@@ -1,239 +1,821 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Store - Jual Produk Digital & Jasa Joki</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MANZ STORE - Jual Beli Produk Digital</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  :root {
+    --primary: #6c5ce7;
+    --secondary: #00cec9;
+    --dark: #0f0f1e;
+    --darker: #080812;
+    --light: #f5f6fa;
+    --accent: #fd79a8;
+    --gradient: linear-gradient(135deg, #6c5ce7, #00cec9);
+  }
+
+  body {
+    background: var(--darker);
+    color: var(--light);
+    overflow-x: hidden;
+  }
+
+  /* NAVBAR */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(15, 15, 30, 0.85);
+    backdrop-filter: blur(12px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(108, 92, 231, 0.2);
+  }
+
+  .logo {
+    font-size: 1.6rem;
+    font-weight: 800;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+  }
+
+  .logo span {
+    color: var(--accent);
+    -webkit-text-fill-color: var(--accent);
+  }
+
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+  }
+
+  nav ul li a {
+    color: var(--light);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: 0.3s;
+    position: relative;
+  }
+
+  nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient);
+    transition: 0.3s;
+  }
+
+  nav ul li a:hover::after {
+    width: 100%;
+  }
+
+  nav ul li a:hover {
+    color: var(--secondary);
+  }
+
+  .btn-wa {
+    background: #25D366;
+    color: white;
+    padding: 10px 22px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  }
+
+  .btn-wa:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 120px 8% 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(108, 92, 231, 0.3), transparent 70%);
+    border-radius: 50%;
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -200px;
+    left: -200px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0, 206, 201, 0.25), transparent 70%);
+    border-radius: 50%;
+    animation: float 10s ease-in-out infinite reverse;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(30px, -30px); }
+  }
+
+  .hero-text {
+    max-width: 550px;
+    z-index: 2;
+    animation: slideIn 1s ease;
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .hero-text h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+
+  .hero-text h1 span {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-text p {
+    font-size: 1.1rem;
+    color: #b0b0c0;
+    margin-bottom: 35px;
+    line-height: 1.7;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 14px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: 0.3s;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--gradient);
+    color: white;
+    box-shadow: 0 8px 25px rgba(108, 92, 231, 0.5);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(108, 92, 231, 0.7);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--light);
+    border: 2px solid var(--primary);
+  }
+
+  .btn-outline:hover {
+    background: var(--primary);
+    transform: translateY(-4px);
+  }
+
+  .hero-visual {
+    position: relative;
+    z-index: 2;
+    animation: slideInRight 1s ease;
+  }
+
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .card-stack {
+    position: relative;
+    width: 380px;
+    height: 420px;
+  }
+
+  .float-card {
+    position: absolute;
+    background: rgba(30, 30, 50, 0.9);
+    border: 1px solid rgba(108, 92, 231, 0.3);
+    border-radius: 20px;
+    padding: 25px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  }
+
+  .float-card:nth-child(1) {
+    top: 0;
+    left: 0;
+    width: 100%;
+    animation: cardFloat 5s ease-in-out infinite;
+  }
+
+  .float-card:nth-child(2) {
+    bottom: 0;
+    right: -30px;
+    width: 260px;
+    animation: cardFloat 6s ease-in-out infinite reverse;
+    background: linear-gradient(135deg, rgba(108, 92, 231, 0.4), rgba(0, 206, 201, 0.3));
+  }
+
+  @keyframes cardFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+
+  .card-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--gradient);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .float-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+
+  .float-card p {
+    font-size: 0.85rem;
+    color: #a0a0b0;
+  }
+
+  .stars {
+    color: #fdcb6e;
+    margin-top: 10px;
+    font-size: 0.9rem;
+  }
+
+  /* SECTION */
+  section {
+    padding: 100px 8%;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .section-title h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+
+  .section-title h2 span {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .section-title p {
+    color: #a0a0b0;
+    font-size: 1rem;
+  }
+
+  /* PRODUCTS */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+  }
+
+  .product-card {
+    background: linear-gradient(145deg, #15152a, #0f0f1e);
+    border: 1px solid rgba(108, 92, 231, 0.2);
+    border-radius: 18px;
+    padding: 28px;
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: 0.4s;
+  }
+
+  .product-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .product-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(108, 92, 231, 0.6);
+    box-shadow: 0 20px 40px rgba(108, 92, 231, 0.25);
+  }
+
+  .product-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin-bottom: 18px;
+    background: var(--gradient);
+  }
+
+  .product-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+
+  .product-card p {
+    font-size: 0.88rem;
+    color: #a0a0b0;
+    margin-bottom: 18px;
+    line-height: 1.6;
+  }
+
+  .price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .price span {
+    font-size: 1.2rem;
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .price a {
+    background: rgba(108, 92, 231, 0.2);
+    color: var(--secondary);
+    padding: 8px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: 0.3s;
+    border: 1px solid rgba(0, 206, 201, 0.3);
+  }
+
+  .price a:hover {
+    background: var(--secondary);
+    color: white;
+  }
+
+  /* FEATURES */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+  }
+
+  .feature {
+    text-align: center;
+    padding: 35px 25px;
+    background: rgba(21, 21, 42, 0.5);
+    border-radius: 18px;
+    border: 1px solid rgba(108, 92, 231, 0.15);
+    transition: 0.4s;
+  }
+
+  .feature:hover {
+    background: rgba(108, 92, 231, 0.1);
+    transform: translateY(-5px);
+  }
+
+  .feature-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: var(--gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: 0 10px 25px rgba(108, 92, 231, 0.4);
+  }
+
+  .feature h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+
+  .feature p {
+    font-size: 0.85rem;
+    color: #a0a0b0;
+    line-height: 1.6;
+  }
+
+  /* CONTACT CTA */
+  .cta {
+    background: linear-gradient(135deg, rgba(108, 92, 231, 0.15), rgba(0, 206, 201, 0.15));
+    border-radius: 25px;
+    padding: 70px 40px;
+    text-align: center;
+    border: 1px solid rgba(108, 92, 231, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(108, 92, 231, 0.4), transparent 70%);
+    border-radius: 50%;
+  }
+
+  .cta h2 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta h2 span {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .cta p {
+    color: #b0b0c0;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .admin-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px 30px;
+    border-radius: 50px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(37, 211, 102, 0.3);
+    position: relative;
+    z-index: 1;
+  }
+
+  .admin-info .dot {
+    width: 10px;
+    height: 10px;
+    background: #25D366;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+  }
+
+  .admin-info strong {
+    color: var(--secondary);
+    font-size: 1.1rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #05050d;
+    padding: 40px 8% 25px;
+    text-align: center;
+    border-top: 1px solid rgba(108, 92, 231, 0.2);
+  }
+
+  footer .logo {
+    margin-bottom: 15px;
+    display: inline-block;
+  }
+
+  footer p {
+    color: #808090;
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
+
+  footer .socials {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+  }
+
+  footer .socials a {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(108, 92, 231, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light);
+    text-decoration: none;
+    transition: 0.3s;
+    border: 1px solid rgba(108, 92, 231, 0.3);
+  }
+
+  footer .socials a:hover {
+    background: var(--gradient);
+    transform: translateY(-3px);
+  }
+
+  /* FLOATING WA BUTTON */
+  .wa-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+    z-index: 999;
+    animation: bounce 2s infinite;
+    transition: 0.3s;
+  }
+
+  .wa-float:hover {
+    transform: scale(1.1);
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero {
+      flex-direction: column;
+      text-align: center;
+      gap: 60px;
+    }
+
+    .hero-text h1 { font-size: 2.5rem; }
+    .hero-btns { justify-content: center; }
+    .card-stack { width: 100%; max-width: 350px; }
+    .float-card:nth-child(2) { right: 0; }
+    nav ul { display: none; }
+  }
+
+  @media (max-width: 500px) {
+    .hero-text h1 { font-size: 2rem; }
+    .section-title h2 { font-size: 1.8rem; }
+    .cta h2 { font-size: 1.6rem; }
+    section { padding: 70px 5%; }
+    nav { padding: 15px 5%; }
+  }
+</style>
 </head>
 <body>
 
-    <!-- ===== NAVBAR ===== -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <i class="fas fa-bolt"></i> Digital<span>Store</span>
-            </a>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#produk">Produk</a></li>
-                <li><a href="#joki">Jasa Joki</a></li>
-                <li><a href="#kontak">Kontak</a></li>
-            </ul>
-            <div class="nav-right">
-                <button class="cart-btn" onclick="toggleCart()">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count" id="cartCount">0</span>
-                </button>
-                <div class="hamburger" onclick="toggleMenu()">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </div>
-        </div>
-    </nav>
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">MANZ<span>STORE</span></div>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#produk">Produk</a></li>
+    <li><a href="#keunggulan">Keunggulan</a></li>
+    <li><a href="#kontak">Kontak</a></li>
+  </ul>
+  <a href="https://wa.me/6287745460192" class="btn-wa" target="_blank">📱 Hubungi Admin</a>
+</nav>
 
-    <!-- ===== HERO ===== -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <span class="badge">🔥 Trusted Seller Sejak 2020</span>
-            <h1>Jual Beli <span>Produk Digital</span> & Jasa Joki Terpercaya</h1>
-            <p>Akun premium, top up game, jasa joki rank, hingga produk digital lainnya. Proses cepat, aman, dan bergaransi!</p>
-            <div class="hero-buttons">
-                <a href="#produk" class="btn btn-primary">Lihat Produk <i class="fas fa-arrow-right"></i></a>
-                <a href="https://wa.me/6281234567890" target="_blank" class="btn btn-outline">
-                    <i class="fab fa-whatsapp"></i> Chat Admin
-                </a>
-            </div>
-            <div class="hero-stats">
-                <div><h3>5K+</h3><p>Transaksi</p></div>
-                <div><h3>4.9★</h3><p>Rating</p></div>
-                <div><h3>24/7</h3><p>Online</p></div>
-            </div>
-        </div>
-        <div class="hero-image">
-            <div class="floating-card card-1">
-                <i class="fas fa-gamepad"></i>
-                <div><b>Joki Rank</b><br><small>Mulai 10K</small></div>
-            </div>
-            <div class="floating-card card-2">
-                <i class="fas fa-crown"></i>
-                <div><b>Akun Premium</b><br><small>Garansi 30 Hari</small></div>
-            </div>
-            <div class="floating-card card-3">
-                <i class="fas fa-bolt"></i>
-                <div><b>Proses Instan</b><br><small>1-5 Menit</small></div>
-            </div>
-        </div>
-    </section>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <h1>Jual Beli Produk <span>Digital</span> Terpercaya</h1>
+    <p>MANZ STORE menyediakan berbagai produk digital premium dengan harga terjangkau, proses cepat, dan pelayanan ramah 24 jam. Akun, voucher, top up, dan banyak lagi!</p>
+    <div class="hero-btns">
+      <a href="#produk" class="btn btn-primary">Lihat Produk</a>
+      <a href="https://wa.me/6287745460192" class="btn btn-outline" target="_blank">Chat Admin</a>
+    </div>
+  </div>
 
-    <!-- ===== FITUR ===== -->
-    <section class="features">
-        <div class="feature-item">
-            <i class="fas fa-shield-alt"></i>
-            <h4>Aman & Terpercaya</h4>
-            <p>100% bergaransi</p>
-        </div>
-        <div class="feature-item">
-            <i class="fas fa-bolt"></i>
-            <h4>Proses Cepat</h4>
-            <p>Instan 1-5 menit</p>
-        </div>
-        <div class="feature-item">
-            <i class="fas fa-headset"></i>
-            <h4>Support 24/7</h4>
-            <p>Admin selalu online</p>
-        </div>
-        <div class="feature-item">
-            <i class="fas fa-wallet"></i>
-            <h4>Harga Terjangkau</h4>
-            <p>Mulai dari 5K saja</p>
-        </div>
-    </section>
+  <div class="hero-visual">
+    <div class="card-stack">
+      <div class="float-card">
+        <div class="card-icon">⚡</div>
+        <h3>Proses Kilat</h3>
+        <p>Pesanan langsung diproses dalam hitungan menit setelah pembayaran.</p>
+        <div class="stars">★★★★★</div>
+      </div>
+      <div class="float-card">
+        <div class="card-icon">🛡️</div>
+        <h3>100% Aman</h3>
+        <p>Garansi & legalitas terjamin.</p>
+        <div class="stars">★★★★★</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- ===== PRODUK DIGITAL ===== -->
-    <section class="section" id="produk">
-        <div class="section-header">
-            <span class="subtitle">Katalog Kami</span>
-            <h2>Produk <span>Digital</span></h2>
-            <p>Pilih produk digital favoritmu dengan harga terbaik</p>
-        </div>
+<!-- PRODUK -->
+<section id="produk">
+  <div class="section-title">
+    <h2>Produk <span>Digital</span> Kami</h2>
+    <p>Pilihan produk digital terlengkap dengan harga terbaik</p>
+  </div>
 
-        <!-- Filter -->
-        <div class="filter-bar">
-            <button class="filter-btn active" data-filter="all">Semua</button>
-            <button class="filter-btn" data-filter="akun">Akun Premium</button>
-            <button class="filter-btn" data-filter="topup">Top Up</button>
-            <button class="filter-btn" data-filter="voucher">Voucher</button>
-        </div>
-
-        <div class="product-grid" id="productGrid">
-            <!-- Produk akan di-render via JS -->
-        </div>
-    </section>
-
-    <!-- ===== JASA JOKI ===== -->
-    <section class="section joki-section" id="joki">
-        <div class="section-header">
-            <span class="subtitle">Jasa Profesional</span>
-            <h2>Layanan <span>Jasa Joki</span></h2>
-            <p>Tim joki berpengalaman siap bantu push rank kamu</p>
-        </div>
-
-        <div class="joki-grid" id="jokiGrid">
-            <!-- Joki akan di-render via JS -->
-        </div>
-    </section>
-
-    <!-- ===== KONTAK ===== -->
-    <section class="section contact-section" id="kontak">
-        <div class="section-header">
-            <span class="subtitle">Hubungi Kami</span>
-            <h2>Butuh Bantuan? <span>Kontak Kami</span></h2>
-            <p>Admin siap membantu kamu 24 jam setiap hari</p>
-        </div>
-
-        <div class="contact-grid">
-            <a href="https://wa.me/6281234567890" target="_blank" class="contact-card wa">
-                <i class="fab fa-whatsapp"></i>
-                <h4>WhatsApp</h4>
-                <p>+62 812-3456-7890</p>
-                <span>Chat Sekarang →</span>
-            </a>
-            <a href="https://t.me/usernamekamu" target="_blank" class="contact-card tg">
-                <i class="fab fa-telegram"></i>
-                <h4>Telegram</h4>
-                <p>@usernamekamu</p>
-                <span>Chat Sekarang →</span>
-            </a>
-            <a href="https://instagram.com/usernamekamu" target="_blank" class="contact-card ig">
-                <i class="fab fa-instagram"></i>
-                <h4>Instagram</h4>
-                <p>@usernamekamu</p>
-                <span>Follow Sekarang →</span>
-            </a>
-            <a href="mailto:emailkamu@gmail.com" class="contact-card em">
-                <i class="fas fa-envelope"></i>
-                <h4>Email</h4>
-                <p>emailkamu@gmail.com</p>
-                <span>Kirim Email →</span>
-            </a>
-        </div>
-    </section>
-
-    <!-- ===== FOOTER ===== -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-col">
-                <a href="#" class="logo">
-                    <i class="fas fa-bolt"></i> Digital<span>Store</span>
-                </a>
-                <p>Toko digital terpercaya untuk semua kebutuhan produk digital dan jasa joki kamu.</p>
-                <div class="social">
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Menu</h4>
-                <a href="#home">Home</a>
-                <a href="#produk">Produk</a>
-                <a href="#joki">Jasa Joki</a>
-                <a href="#kontak">Kontak</a>
-            </div>
-            <div class="footer-col">
-                <h4>Layanan</h4>
-                <a href="#">Akun Premium</a>
-                <a href="#">Top Up Game</a>
-                <a href="#">Joki Rank</a>
-                <a href="#">Voucher Digital</a>
-            </div>
-            <div class="footer-col">
-                <h4>Pembayaran</h4>
-                <div class="payment-icons">
-                    <i class="fas fa-qrcode"></i>
-                    <i class="fas fa-university"></i>
-                    <i class="fas fa-mobile-alt"></i>
-                    <i class="fas fa-wallet"></i>
-                </div>
-                <p class="small">Dana, OVO, GoPay, QRIS, BCA, Mandiri</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 DigitalStore. All rights reserved. Made with ❤️ in Indonesia</p>
-        </div>
-    </footer>
-
-    <!-- ===== CART SIDEBAR ===== -->
-    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
-    <aside class="cart-sidebar" id="cartSidebar">
-        <div class="cart-header">
-            <h3><i class="fas fa-shopping-cart"></i> Keranjang</h3>
-            <button onclick="toggleCart()"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="cart-items" id="cartItems">
-            <p class="empty-cart">Keranjang masih kosong 🛒</p>
-        </div>
-        <div class="cart-footer">
-            <div class="cart-total">
-                <span>Total:</span>
-                <b id="cartTotal">Rp 0</b>
-            </div>
-            <button class="btn btn-primary btn-full" onclick="checkout()">
-                <i class="fab fa-whatsapp"></i> Checkout via WhatsApp
-            </button>
-        </div>
-    </aside>
-
-    <!-- ===== TOAST ===== -->
-    <div class="toast" id="toast">
-        <i class="fas fa-check-circle"></i>
-        <span id="toastMsg">Berhasil!</span>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-img">🎮</div>
+      <h3>Top Up Game</h3>
+      <p>Diamond ML, UC PUBG, Voucher FF, dan game populer lainnya.</p>
+      <div class="price">
+        <span>Mulai 5K</span>
+        <a href="https://wa.me/6287745460192" target="_blank">Beli</a>
+      </div>
     </div>
 
-    <script src="script.js"></script>
+    <div class="product-card">
+      <div class="product-img">📺</div>
+      <h3>Akun Streaming</h3>
+      <p>Netflix, Spotify, Viu, Disney+ premium dengan harga murah.</p>
+      <div class="price">
+        <span>Mulai 10K</span>
+        <a href="https://wa.me/6287745460192" target="_blank">Beli</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">💳</div>
+      <h3>Voucher Digital</h3>
+      <p>Google Play, Steam Wallet, Garena, dan voucher lainnya.</p>
+      <div class="price">
+        <span>Mulai 15K</span>
+        <a href="https://wa.me/6287745460192" target="_blank">Beli</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">🎨</div>
+      <h3>Design & Tools</h3>
+      <p>Canva Pro, CapCut Pro, Grammarly, dan tools premium lainnya.</p>
+      <div class="price">
+        <span>Mulai 8K</span>
+        <a href="https://wa.me/6287745460192" target="_blank">Beli</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">📚</div>
+      <h3>Ebook & Course</h3>
+      <p>Koleksi ebook, course, dan materi pembelajaran digital.</p>
+      <div class="price">
+        <span>Mulai 12K</span>
+        <a href="https://wa.me/6287745460192" target="_blank">Beli</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">💬</div>
+      <h3>Pulsa & Data</h3>
+      <p>Semua operator dengan harga bersaing dan proses instan.</p>
+      <div class="price">
+        <span>Mulai 6K</span>
+        <a href="https://wa.me/6287745460192" target="_blank">Beli</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEUNGGULAN -->
+<section id="keunggulan">
+  <div class="section-title">
+    <h2>Kenapa Pilih <span>MANZ STORE</span>?</h2>
+    <p>Kepercayaan dan kepuasan pelanggan adalah prioritas kami</p>
+  </div>
+
+  <div class="features">
+    <div class="feature">
+      <div class="feature-icon">⚡</div>
+      <h3>Cepat & Instan</h3>
+      <p>Proses pesanan otomatis dan cepat tanpa ribet.</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">🛡️</div>
+      <h3>Terpercaya</h3>
+      <p>Sudah melayani ribuan pelanggan dengan rating 5 bintang.</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">💰</div>
+      <h3>Harga Termurah</h3>
+      <p>Harga bersaing dan sering ada promo spesial.</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">💬</div>
+      <h3>Support 24 Jam</h3>
+      <p>Admin ramah siap membantu kapan saja via WhatsApp.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / KONTAK -->
+<section id="kontak">
+  <div class="cta">
+    <h2>Hubungi <span>Admin Kami</span> Sekarang</h2>
+    <p>Order cepat, respon ramah, dan proses langsung jalan!</p>
+
+    <div class="admin-info">
+      <span class="dot"></span>
+      <span>Admin WA: <strong>0877-4546-0192</strong></span>
+    </div>
+
+    <br>
+    <a href="https://wa.me/6287745460192?text=Halo%20MANZ%20STORE,%20saya%20mau%20order" class="btn btn-primary" target="_blank">
+      💬 Chat via WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">MANZ<span>STORE</span></div>
+
+  <div class="socials">
+    <a href="https://wa.me/6287745460192" target="_blank" title="WhatsApp">💬</a>
+    <a href="#" title="Instagram">📷</a>
+    <a href="#" title="Facebook">📘</a>
+    <a href="#" title="TikTok">🎵</a>
+  </div>
+
+  <p>© 2025 MANZ STORE. All rights reserved.</p>
+  <p>Admin: 0877-4546-0192 | Produk Digital Terpercaya</p>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/6287745460192" class="wa-float" target="_blank" title="Chat Admin">💬</a>
+
 </body>
 </html>
