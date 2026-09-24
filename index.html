@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Store - Jual Produk Digital & Jasa Joki</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-bolt"></i> Digital<span>Store</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#produk">Produk</a></li>
+                <li><a href="#joki">Jasa Joki</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="cart-btn" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <div class="hamburger" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="badge">🔥 Trusted Seller Sejak 2020</span>
+            <h1>Jual Beli <span>Produk Digital</span> & Jasa Joki Terpercaya</h1>
+            <p>Akun premium, top up game, jasa joki rank, hingga produk digital lainnya. Proses cepat, aman, dan bergaransi!</p>
+            <div class="hero-buttons">
+                <a href="#produk" class="btn btn-primary">Lihat Produk <i class="fas fa-arrow-right"></i></a>
+                <a href="https://wa.me/6281234567890" target="_blank" class="btn btn-outline">
+                    <i class="fab fa-whatsapp"></i> Chat Admin
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div><h3>5K+</h3><p>Transaksi</p></div>
+                <div><h3>4.9★</h3><p>Rating</p></div>
+                <div><h3>24/7</h3><p>Online</p></div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="floating-card card-1">
+                <i class="fas fa-gamepad"></i>
+                <div><b>Joki Rank</b><br><small>Mulai 10K</small></div>
+            </div>
+            <div class="floating-card card-2">
+                <i class="fas fa-crown"></i>
+                <div><b>Akun Premium</b><br><small>Garansi 30 Hari</small></div>
+            </div>
+            <div class="floating-card card-3">
+                <i class="fas fa-bolt"></i>
+                <div><b>Proses Instan</b><br><small>1-5 Menit</small></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FITUR ===== -->
+    <section class="features">
+        <div class="feature-item">
+            <i class="fas fa-shield-alt"></i>
+            <h4>Aman & Terpercaya</h4>
+            <p>100% bergaransi</p>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-bolt"></i>
+            <h4>Proses Cepat</h4>
+            <p>Instan 1-5 menit</p>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-headset"></i>
+            <h4>Support 24/7</h4>
+            <p>Admin selalu online</p>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-wallet"></i>
+            <h4>Harga Terjangkau</h4>
+            <p>Mulai dari 5K saja</p>
+        </div>
+    </section>
+
+    <!-- ===== PRODUK DIGITAL ===== -->
+    <section class="section" id="produk">
+        <div class="section-header">
+            <span class="subtitle">Katalog Kami</span>
+            <h2>Produk <span>Digital</span></h2>
+            <p>Pilih produk digital favoritmu dengan harga terbaik</p>
+        </div>
+
+        <!-- Filter -->
+        <div class="filter-bar">
+            <button class="filter-btn active" data-filter="all">Semua</button>
+            <button class="filter-btn" data-filter="akun">Akun Premium</button>
+            <button class="filter-btn" data-filter="topup">Top Up</button>
+            <button class="filter-btn" data-filter="voucher">Voucher</button>
+        </div>
+
+        <div class="product-grid" id="productGrid">
+            <!-- Produk akan di-render via JS -->
+        </div>
+    </section>
+
+    <!-- ===== JASA JOKI ===== -->
+    <section class="section joki-section" id="joki">
+        <div class="section-header">
+            <span class="subtitle">Jasa Profesional</span>
+            <h2>Layanan <span>Jasa Joki</span></h2>
+            <p>Tim joki berpengalaman siap bantu push rank kamu</p>
+        </div>
+
+        <div class="joki-grid" id="jokiGrid">
+            <!-- Joki akan di-render via JS -->
+        </div>
+    </section>
+
+    <!-- ===== KONTAK ===== -->
+    <section class="section contact-section" id="kontak">
+        <div class="section-header">
+            <span class="subtitle">Hubungi Kami</span>
+            <h2>Butuh Bantuan? <span>Kontak Kami</span></h2>
+            <p>Admin siap membantu kamu 24 jam setiap hari</p>
+        </div>
+
+        <div class="contact-grid">
+            <a href="https://wa.me/6281234567890" target="_blank" class="contact-card wa">
+                <i class="fab fa-whatsapp"></i>
+                <h4>WhatsApp</h4>
+                <p>+62 812-3456-7890</p>
+                <span>Chat Sekarang →</span>
+            </a>
+            <a href="https://t.me/usernamekamu" target="_blank" class="contact-card tg">
+                <i class="fab fa-telegram"></i>
+                <h4>Telegram</h4>
+                <p>@usernamekamu</p>
+                <span>Chat Sekarang →</span>
+            </a>
+            <a href="https://instagram.com/usernamekamu" target="_blank" class="contact-card ig">
+                <i class="fab fa-instagram"></i>
+                <h4>Instagram</h4>
+                <p>@usernamekamu</p>
+                <span>Follow Sekarang →</span>
+            </a>
+            <a href="mailto:emailkamu@gmail.com" class="contact-card em">
+                <i class="fas fa-envelope"></i>
+                <h4>Email</h4>
+                <p>emailkamu@gmail.com</p>
+                <span>Kirim Email →</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <a href="#" class="logo">
+                    <i class="fas fa-bolt"></i> Digital<span>Store</span>
+                </a>
+                <p>Toko digital terpercaya untuk semua kebutuhan produk digital dan jasa joki kamu.</p>
+                <div class="social">
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Menu</h4>
+                <a href="#home">Home</a>
+                <a href="#produk">Produk</a>
+                <a href="#joki">Jasa Joki</a>
+                <a href="#kontak">Kontak</a>
+            </div>
+            <div class="footer-col">
+                <h4>Layanan</h4>
+                <a href="#">Akun Premium</a>
+                <a href="#">Top Up Game</a>
+                <a href="#">Joki Rank</a>
+                <a href="#">Voucher Digital</a>
+            </div>
+            <div class="footer-col">
+                <h4>Pembayaran</h4>
+                <div class="payment-icons">
+                    <i class="fas fa-qrcode"></i>
+                    <i class="fas fa-university"></i>
+                    <i class="fas fa-mobile-alt"></i>
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <p class="small">Dana, OVO, GoPay, QRIS, BCA, Mandiri</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 DigitalStore. All rights reserved. Made with ❤️ in Indonesia</p>
+        </div>
+    </footer>
+
+    <!-- ===== CART SIDEBAR ===== -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <aside class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Keranjang</h3>
+            <button onclick="toggleCart()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart">Keranjang masih kosong 🛒</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <b id="cartTotal">Rp 0</b>
+            </div>
+            <button class="btn btn-primary btn-full" onclick="checkout()">
+                <i class="fab fa-whatsapp"></i> Checkout via WhatsApp
+            </button>
+        </div>
+    </aside>
+
+    <!-- ===== TOAST ===== -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMsg">Berhasil!</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
